@@ -1,0 +1,26 @@
+<p-button (click)="showDialog()" label="+ Edit" size="small"/>
+<p-dialog header="Edit posts" [(visible)]="visible" [style]="{ width: '25rem' }">
+  <!-- Adiciona a diretiva [formGroup] ao elemento form -->
+  <div class="form-container">
+    <form [formGroup]="formGroup!" (submit)="editPost()">
+      <div class="card flex justify-content-center">
+        <app-input-component [control]="titleControl" placeholder="Title"
+        ></app-input-component>
+      </div>
+      <div class="card flex justify-content-center">
+        <textarea rows="5" cols="30" pInputTextarea formControlName="content" placeholder="Content"
+                  style="width: 100%"></textarea>
+      </div>
+      <div class="card flex justify-content-center">
+        <app-input-component [control]="authorControl" placeholder="Author"
+        ></app-input-component>
+      </div>
+      <div class="card flex justify-content-center">
+        <p-dropdown class="w-100" formControlName="categoryName" [options]="categories" optionLabel="name" optionValue="name"  placeholder="Select a Category"></p-dropdown>
+      </div>
+      <button pButton type="submit" label="Edit Post"
+              [icon]="editLoading ? 'pi pi-spin pi-spinner' : ''"
+              [disabled]="editLoading"></button>
+    </form>
+  </div>
+</p-dialog>

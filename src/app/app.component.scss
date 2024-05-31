@@ -1,0 +1,17 @@
+
+.no-posts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.actions {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.w-100 {
+  width: 100%;
+}

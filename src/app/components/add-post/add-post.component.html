@@ -1,0 +1,26 @@
+<p-button (click)="showDialog()" label="+ Add"/>
+<p-dialog header="Add posts" [(visible)]="visible" [style]="{ width: '25rem' }">
+  <!-- Adiciona a diretiva [formGroup] ao elemento form -->
+  <div class="form-container">
+    <form [formGroup]="formGroup!" (submit)="addPost()">
+      <div class="card flex justify-content-center">
+        <app-input-component [control]="titleControl" placeholder="Title"
+        ></app-input-component>
+      </div>
+      <div class="card flex justify-content-center">
+        <textarea rows="5" cols="30" pInputTextarea formControlName="content" placeholder="Content"
+                  style="width: 100%"></textarea>
+      </div>
+      <div class="card flex justify-content-center">
+        <app-input-component [control]="authorControl" placeholder="Author"
+        ></app-input-component>
+      </div>
+      <div class="card flex justify-content-center">
+          <p-dropdown class="w-100" formControlName="categoryName" [options]="categories" optionLabel="name" placeholder="Select a Category"></p-dropdown>
+      </div>
+      <button pButton type="submit" label="Add Post"
+              [icon]="addLoading ? 'pi pi-spin pi-spinner' : ''"
+              [disabled]="formGroup.pristine || formGroup.invalid || addLoading"></button>
+    </form>
+  </div>
+</p-dialog>
